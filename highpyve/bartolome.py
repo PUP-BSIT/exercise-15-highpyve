@@ -24,7 +24,7 @@ def buffer():
     input("\nPress [ENTER] to return to main menu...")
     clear_screen()
 
-class FavoriteMusicalLyrics:
+class MusicalRecords:
     #Disctionary of Mikaela's favorite lyrics
     MUSICAL_LYRICS = {
         MusicalTitles.WICKED: [
