@@ -2,6 +2,7 @@ import os
 from highpyve.anipan import Cat
 from highpyve.tolentino import Person
 from highpyve.ocariza import BeautyProfile
+from highpyve.bartolome import FavoriteMusicalLyrics
 
 # Constants for menu choices
 class MenuOptions:
@@ -52,7 +53,8 @@ def main():
                             "South Signal Taguig City", "July 15, 2004")
                 main_menu.menu()
             case MenuOptions.BARTOLOME:
-                # TODO (BARTOLOME): Instantiate class and call menu
+                favorite_musical = FavoriteMusicalLyrics()
+                favorite_musical.menu()
                 pass
             case MenuOptions.OCARIZA:
                 profile = BeautyProfile("Jaira", "Normal", "Sunscreen")
