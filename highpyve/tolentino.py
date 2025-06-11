@@ -122,13 +122,8 @@ class Person:
                       "See you next time from Tolentino's menu!")
                 buffer()
                 return MenuOption.EXIT_OPTION
-            
-            if 1 <= choice <= 6:
-                return choice
-            else:
-                print("\nInvalid option. Please enter a number from 0 to 6.")
-                buffer()
-
+            return choice
+        
     def process_choice(self, user_choice):
         match user_choice:
             case MenuOption.NAME:
@@ -143,6 +138,9 @@ class Person:
                 self.show_birthday()
             case MenuOption.PERSON_SUMMARY:
                 self.display_summary()
+            case _:
+                print("\nInvalid option. Please enter a number from 0 to 6.")
+                buffer()
 
     def menu(self):
         clear_screen()
