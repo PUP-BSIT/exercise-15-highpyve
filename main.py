@@ -55,7 +55,6 @@ def main():
             case MenuOptions.BARTOLOME:
                 favorite_musical = FavoriteMusicalLyrics()
                 favorite_musical.menu()
-                pass
             case MenuOptions.OCARIZA:
                 profile = BeautyProfile("Jaira", "Normal", "Sunscreen")
                 profile.menu()
