@@ -1,5 +1,8 @@
 import os
 
+EXIT_OPTION = 0
+UNSET_OPTION = ""
+
 #Constant for Main Menu
 class MusicalMenuOptions:
     WICKED = 1
@@ -82,19 +85,17 @@ class FavoriteMusicalLyrics:
 
     def display_menu(self):
         clear_screen()
-        print("******************************************")
-        print("\tMika's Favorite Musical")
-        print("\t  Lyrics Compilation")
-        print("******************************************")
-        print(f"[{MusicalMenuOptions.WICKED}] - Wicked by Jon M. Chu")
-        print(f"[{MusicalMenuOptions.HAMILTON}] - Hamilton by Thomas Kail")
-        print(f"[{MusicalMenuOptions.EPIC}] - Epic by Jorge Rivera-Herrans")
-        print(f"[{MusicalMenuOptions.EXIT}] - Exit")
-        print("******************************************")
-
-    def menu(self):
         while True:
-            self.display_menu()
+            print("******************************************")
+            print("\tMika's Favorite Musical")
+            print("\t  Lyrics Compilation")
+            print("******************************************")
+            print(f"[{MusicalMenuOptions.WICKED}] - Wicked by Jon M. Chu")
+            print(f"[{MusicalMenuOptions.HAMILTON}] - Hamilton by Thomas Kail")
+            print(f"[{MusicalMenuOptions.EPIC}] - Epic by Jorge Rivera-Herrans")
+            print(f"[{MusicalMenuOptions.EXIT}] - Exit")
+            print("******************************************")
+
             try:
                 choice = int(input("Enter your choice: "))
             except ValueError:
@@ -102,18 +103,31 @@ class FavoriteMusicalLyrics:
                 buffer()
                 continue
 
-            match choice:
-                case MusicalMenuOptions.WICKED:
-                    self.display_lyrics(MusicalTitles.WICKED)
-                case MusicalMenuOptions.HAMILTON:
-                    self.display_lyrics(MusicalTitles.HAMILTON)
-                case MusicalMenuOptions.EPIC:
-                    self.display_lyrics(MusicalTitles.EPIC)
-                case MusicalMenuOptions.EXIT:
-                    clear_screen()
-                    print("Thank you for visiting Mika's Module")
-                    buffer()
-                    break
-                case _:
-                    print("Invalid option. Please pick a number from 0-3.")
-                    buffer()
+            #Exit loop if user selects 0
+            if choice == EXIT_OPTION:
+                clear_screen()
+                print("Thank you for visiting Mika's Module")
+                buffer()
+                return EXIT_OPTION
+            
+            if 1 <= choice <= 3:
+                return choice
+            else:
+                print("Invalid option. Please pick a number from 0-3.")
+                buffer()           
+
+    def process_choice(self, user_choice):
+        match user_choice:
+            case MusicalMenuOptions.WICKED:
+                self.display_lyrics(MusicalTitles.WICKED)
+            case MusicalMenuOptions.HAMILTON:
+                self.display_lyrics(MusicalTitles.HAMILTON)
+            case MusicalMenuOptions.EPIC:
+                self.display_lyrics(MusicalTitles.EPIC)
+
+    def menu(self):
+        clear_screen()
+        user_choice = UNSET_OPTION
+        while user_choice != EXIT_OPTION:
+            user_choice = self.display_menu()
+            self.process_choice(user_choice)
