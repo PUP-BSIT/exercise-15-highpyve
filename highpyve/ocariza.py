@@ -1,7 +1,6 @@
 import os
 
 EXIT_OPTION = 0
-UNSET_OPTION = ""
 
 # Constants for skin types
 SKIN_TYPE_OILY = "Oily"
@@ -154,7 +153,7 @@ class BeautyProfile:
 
     def menu(self):
         clear_screen()
-        user_choice = UNSET_OPTION
+        user_choice = None
         while user_choice != EXIT_OPTION:
             user_choice = self.display_menu()
             self.process_choice(user_choice)
