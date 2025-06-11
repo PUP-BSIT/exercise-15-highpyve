@@ -1,16 +1,17 @@
 import os
 
 EXIT_OPTION = 0
-UNSET_OPTION = ""
 
-#Constant for Main Menu
-class MusicalMenuOptions:
+# Constant for Main Menu
+class MenuOptions:
     WICKED = 1
     HAMILTON = 2
     EPIC = 3
+    CHARACTERS = 4
+    RATINGS = 5
     EXIT = 0
 
-#Constant for Titles
+# Constant for Titles
 class MusicalTitles:
     WICKED = "Wicked"
     HAMILTON = "Hamilton"
@@ -24,6 +25,7 @@ def buffer():
     clear_screen()
 
 class FavoriteMusicalLyrics:
+    #Disctionary of Mikaela's favorite lyrics
     MUSICAL_LYRICS = {
         MusicalTitles.WICKED: [
             ('"Are people born wicked? Or do they have wickedness '
@@ -63,7 +65,8 @@ class FavoriteMusicalLyrics:
              '— Open Arms, Polites'),
             ('"I have no respect for bullies, those who impose their will" '
              '— Warrior of the Mind, Athena'),
-            ('"The line between naïveté and hopefulness is almost invisible" '
+            ('"The line between naïveté and hopefulness is '
+            'almost invisible" '
              '— Ruthlessness, Poseidon'),
             ('"You\'re the worst kind of good \'cause you\'re '
             'not even great" '
@@ -71,8 +74,52 @@ class FavoriteMusicalLyrics:
         ]
     }
 
+    #Disctionary of the characters in the 3 Musicals
+    MAIN_CHARACTERS = {
+        MusicalTitles.WICKED: [
+            "Cynthia Erivo & Idina Menzel as Elphaba",
+            "Ariana Grande & Kristin Chenoweth as Glinda",
+            "Jonathan Bailey as Fiyero",
+            "Jeff Goldblum as The Wizard",
+            "Michelle Yeoh as Madame Morrible",
+        ],
+        MusicalTitles.HAMILTON: [
+            "Lin-Manuel Miranda as Alexander Hamilton",
+            "Leslie Odom Jr. as Aaron Burr",
+            "Phillipa Soo as Eliza Schuyler",
+            "Renée Elise Goldsberry as Angelica Schuyler",
+            "Christopher Jackson as George Washington",
+        ],
+        MusicalTitles.EPIC: [
+            "Jorge Rivera-Herrans as Odysseus",
+            "Teagan Earley as Athena",
+            "Steven Rodriguez as Poseidon",
+            "Anna Lea Casey as Penelope",
+            "Steven Dookie as Polites",
+            "Barbara Wangui as Calypso",
+        ]
+    }
+
+    #Disctionary of personal ratings of the 3 Musicals
+    MUSICAL_RATINGS = {
+        MusicalTitles.WICKED: [
+            ("First musical I watched in Cinema. I can't wait "
+            "for the Wicked: For Good — 5/5⭐"),
+        ],
+        MusicalTitles.HAMILTON: [
+            ("I've learned a lot of about American History. I wish"
+            " there are more musicals about History— 5/5⭐"),
+        ],
+        MusicalTitles.EPIC: [
+            ("Hidden gem! This is for greek mythology lover "
+            "like me. — 5/5⭐"),
+        ]
+    }
+
     def __init__(self):
         self.favorite_musical_lyrics = self.MUSICAL_LYRICS
+        self.characters = self.MAIN_CHARACTERS
+        self.personal_ratings = self.MUSICAL_RATINGS
 
     def display_lyrics(self, musical):
         clear_screen()
@@ -83,17 +130,38 @@ class FavoriteMusicalLyrics:
                 print(f'{index}. {lyric}')
         buffer()
 
+    def display_main_characters(self):
+        clear_screen()
+        print("Main Characters and their Actors\n")
+        for musical, characters in self.characters.items():
+            print(f"{musical}:")
+            for name in characters:
+                print(f"  - {name}")
+            print()
+        buffer()
+
+    def display_musical_ratings(self):
+        clear_screen()
+        for musical, ratings in self.personal_ratings.items():
+            print(f"{musical}:")
+            if ratings:
+                for index, rating in enumerate(ratings, 1):
+                    print(f"{index}. {rating}\n")
+        buffer()  
+
     def display_menu(self):
         clear_screen()
         while True:
             print("******************************************")
             print("\tMika's Favorite Musical")
-            print("\t  Lyrics Compilation")
+            print("    Lyrics, Characters, and Ratings")
             print("******************************************")
-            print(f"[{MusicalMenuOptions.WICKED}] - Wicked by Jon M. Chu")
-            print(f"[{MusicalMenuOptions.HAMILTON}] - Hamilton by Thomas Kail")
-            print(f"[{MusicalMenuOptions.EPIC}] - Epic by Jorge Rivera-Herrans")
-            print(f"[{MusicalMenuOptions.EXIT}] - Exit")
+            print(f"[{MenuOptions.WICKED}] - Wicked by Jon M. Chu")
+            print(f"[{MenuOptions.HAMILTON}] - Hamilton by Thomas Kail")
+            print(f"[{MenuOptions.EPIC}] - Epic by Jorge Rivera-Herrans")
+            print(f"[{MenuOptions.CHARACTERS}] - Show Musical Characters")
+            print(f"[{MenuOptions.RATINGS}] - Show Personal Ratings")
+            print(f"[{MenuOptions.EXIT}] - Exit")
             print("******************************************")
 
             try:
@@ -103,31 +171,33 @@ class FavoriteMusicalLyrics:
                 buffer()
                 continue
 
-            #Exit loop if user selects 0
-            if choice == EXIT_OPTION:
+            if choice == MenuOptions.EXIT:
                 clear_screen()
                 print("Thank you for visiting Mika's Module")
                 buffer()
-                return EXIT_OPTION
+                return MenuOptions.EXIT
             
-            if 1 <= choice <= 3:
+            if MenuOptions.WICKED <= choice <= MenuOptions.RATINGS:
                 return choice
             else:
-                print("Invalid option. Please pick a number from 0-3.")
+                print("Invalid option. Please pick a number from 0-5.")
                 buffer()           
 
     def process_choice(self, user_choice):
         match user_choice:
-            case MusicalMenuOptions.WICKED:
+            case MenuOptions.WICKED:
                 self.display_lyrics(MusicalTitles.WICKED)
-            case MusicalMenuOptions.HAMILTON:
+            case MenuOptions.HAMILTON:
                 self.display_lyrics(MusicalTitles.HAMILTON)
-            case MusicalMenuOptions.EPIC:
+            case MenuOptions.EPIC:
                 self.display_lyrics(MusicalTitles.EPIC)
+            case MenuOptions.CHARACTERS:
+                self.display_main_characters()
+            case MenuOptions.RATINGS:
+                self.display_musical_ratings()
 
     def menu(self):
-        clear_screen()
-        user_choice = UNSET_OPTION
+        user_choice = None
         while user_choice != EXIT_OPTION:
             user_choice = self.display_menu()
             self.process_choice(user_choice)
