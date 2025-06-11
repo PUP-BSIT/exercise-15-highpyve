@@ -1,5 +1,6 @@
 import os
 from highpyve.anipan import Cat
+from highpyve.tolentino import Person
 
 # Constants for menu choices
 class MenuOptions:
@@ -46,8 +47,9 @@ def main():
                 my_cat = Cat("Gracia", 8, "Puspin")
                 my_cat.menu()
             case MenuOptions.TOLENTINO:
-                # TODO (TOLENTINO): Instantiate class and call menu
-                pass
+                main_menu = Person("Rose", 20, "Purple", 
+                            "South Signal Taguig City", "July 15, 2004")
+                main_menu.menu()
             case MenuOptions.BARTOLOME:
                 # TODO (BARTOLOME): Instantiate class and call menu
                 pass
