@@ -1,7 +1,6 @@
 import os
 
 EXIT_OPTION = 0
-UNSET_OPTION = ""
 
 # Constants for cat menu options
 class CatMenuOption:
@@ -57,13 +56,12 @@ class Cat:
     def display_menu(self):
         while True:
             print(f"{self.name}'s Menu:\n")
-            print(f"[{CatMenuOption.DETAILS}] - {self.name}'s Details")
-            print(f"[{CatMenuOption.HOBBIES}] - {self.name}'s Hobbies")
-            print(f"[{CatMenuOption.SIBLINGS}] - {self.name}'s Siblings")
-            print(f"[{CatMenuOption.FAVORITE_FOOD}] - "
-                  f"{self.name}'s Favorite Food")
-            print(f"[{CatMenuOption.FRIENDS}] - {self.name}'s Dog Friends")
-            print(f"[{EXIT_OPTION}] - Exit")
+            print(f"[1] - {self.name}'s Details")
+            print(f"[2] - {self.name}'s Hobbies")
+            print(f"[3] - {self.name}'s Siblings")
+            print(f"[4] - {self.name}'s Favorite Food")
+            print(f"[5] - {self.name}'s Dog Friends")
+            print(f"[0] - Back to Main Menu")
             
             user_input = input("\nEnter your choice: ").strip()
 
@@ -80,7 +78,7 @@ class Cat:
                 buffer()
                 return EXIT_OPTION
             
-            if 1 <= choice <= 5:
+            if CatMenuOption.DETAILS <= choice <= CatMenuOption.FRIENDS:
                 return choice
             else:
                 print("Invalid option. Please enter a number from 0 to 5.")
@@ -101,7 +99,7 @@ class Cat:
 
     def menu(self):
         clear_screen()
-        user_choice = UNSET_OPTION
+        user_choice = None
         while user_choice != EXIT_OPTION:
             user_choice = self.display_menu()
             self.process_choice(user_choice)

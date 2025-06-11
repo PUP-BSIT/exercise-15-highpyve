@@ -49,9 +49,9 @@ def main():
                 my_cat = Cat("Gracia", 8, "Puspin")
                 my_cat.menu()
             case MenuOptions.TOLENTINO:
-                main_menu = Person("Rose", 20, "Purple", 
+                my_profile = Person("Rose", 20, "Purple", 
                             "South Signal Taguig City", "July 15, 2004")
-                main_menu.menu()
+                my_profile.menu()
             case MenuOptions.BARTOLOME:
                 favorite_musical = FavoriteMusicalLyrics()
                 favorite_musical.menu()
@@ -59,7 +59,7 @@ def main():
                 profile = BeautyProfile("Jaira", "Normal", "Sunscreen")
                 profile.menu()
             case _:
-                print("\nInvalid choice! Please select a number from 1 to 4.")
+                print("\nInvalid choice! Please select a number from 0 to 4.")
                 buffer()
 
 main()

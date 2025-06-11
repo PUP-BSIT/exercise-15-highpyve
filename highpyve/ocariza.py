@@ -1,7 +1,6 @@
 import os
 
 EXIT_OPTION = 0
-UNSET_OPTION = ""
 
 # Constants for skin types
 SKIN_TYPE_OILY = "Oily"
@@ -126,11 +125,12 @@ class BeautyProfile:
             
             # Exit loop if user selects 0
             if choice == EXIT_OPTION:
-                print("\nExiting Jaira's Beauty Menu. See you soon!")
+                print(f"\nExiting {self.name.title()}'s Beauty Menu. "
+                      "See you soon!")
                 buffer()
                 return EXIT_OPTION
             
-            if 1 <= choice <= 6:
+            if MenuOption.DESCRIBE_SKIN <= choice <= MenuOption.SET_FAV_PRODUCT:
                 return choice
             else:
                 print("\nInvalid option. Please enter a number from 0 to 6.")
@@ -153,7 +153,7 @@ class BeautyProfile:
 
     def menu(self):
         clear_screen()
-        user_choice = UNSET_OPTION
+        user_choice = None
         while user_choice != EXIT_OPTION:
             user_choice = self.display_menu()
             self.process_choice(user_choice)
