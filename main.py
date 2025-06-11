@@ -1,6 +1,7 @@
 import os
 from highpyve.anipan import Cat
 from highpyve.tolentino import Person
+from highpyve.ocariza import BeautyProfile
 
 # Constants for menu choices
 class MenuOptions:
@@ -54,8 +55,8 @@ def main():
                 # TODO (BARTOLOME): Instantiate class and call menu
                 pass
             case MenuOptions.OCARIZA:
-                # TODO (OCARIZA): Instantiate class and call menu
-                pass
+                profile = BeautyProfile("Jaira", "Normal", "Sunscreen")
+                profile.menu()
             case _:
                 print("\nInvalid choice! Please select a number from 1 to 4.")
                 buffer()
