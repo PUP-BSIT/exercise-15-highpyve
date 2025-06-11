@@ -72,7 +72,8 @@ class Cat:
                 print("Invalid option. Please enter a number.")
                 buffer()
                 continue
-
+            
+            # Exit loop if user selects 0
             if choice == CatMenuOptions.EXIT:
                 clear_screen()
                 print("Thank you. Goodbye!")
