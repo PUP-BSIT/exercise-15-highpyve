@@ -126,11 +126,12 @@ class BeautyProfile:
             
             # Exit loop if user selects 0
             if choice == EXIT_OPTION:
-                print("\nExiting Jaira's Beauty Menu. See you soon!")
+                print(f"\nExiting {self.name.title()}'s Beauty Menu. "
+                      "See you soon!")
                 buffer()
                 return EXIT_OPTION
             
-            if 1 <= choice <= 6:
+            if MenuOption.DESCRIBE_SKIN <= choice <= MenuOption.SET_FAV_PRODUCT:
                 return choice
             else:
                 print("\nInvalid option. Please enter a number from 0 to 6.")
