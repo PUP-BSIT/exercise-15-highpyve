@@ -129,7 +129,12 @@ class BeautyProfile:
                 print("\nExiting Jaira's Beauty Menu. See you soon!")
                 buffer()
                 return EXIT_OPTION
-            return choice
+            
+            if 1 <= choice <= 6:
+                return choice
+            else:
+                print("\nInvalid option. Please enter a number from 0 to 6.")
+                buffer()
 
     def process_choice(self, user_choice):
         match user_choice:
@@ -145,9 +150,6 @@ class BeautyProfile:
                 self.update_skin_type()
             case MenuOption.SET_FAV_PRODUCT:
                 self.set_new_favorite_product()
-            case _:
-                print("\nInvalid option. Please enter a number from 0 to 6.")
-                buffer()
 
     def menu(self):
         clear_screen()
