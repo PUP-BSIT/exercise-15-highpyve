@@ -126,7 +126,7 @@ class BeautyProfile:
             
             # Exit loop if user selects 0
             if choice == EXIT_OPTION:
-                print("\nExiting Ocariza's Beauty Menu. See you soon!")
+                print("\nExiting Jaira's Beauty Menu. See you soon!")
                 buffer()
                 return EXIT_OPTION
             return choice
