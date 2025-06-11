@@ -1,5 +1,5 @@
 import os
-#Import module and class here
+from highpyve.anipan import Cat
 
 # Constants for menu choices
 class MenuOptions:
@@ -43,8 +43,8 @@ def main():
 
         match user_choice:
             case MenuOptions.ANIPAN:
-                # TODO (ANIPAN): Instantiate class and call menu
-                pass
+                my_cat = Cat("Gracia", 8, "Puspin")
+                my_cat.menu()
             case MenuOptions.TOLENTINO:
                 # TODO (TOLENTINO): Instantiate class and call menu
                 pass
