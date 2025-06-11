@@ -130,7 +130,8 @@ class BeautyProfile:
                 buffer()
                 return EXIT_OPTION
             
-            if MenuOption.DESCRIBE_SKIN <= choice <= MenuOption.SET_FAV_PRODUCT:
+            if (MenuOption.DESCRIBE_SKIN <= choice 
+                    <= MenuOption.SET_FAV_PRODUCT):
                 return choice
             else:
                 print("\nInvalid option. Please enter a number from 0 to 6.")
