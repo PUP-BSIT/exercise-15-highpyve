@@ -59,7 +59,7 @@ def main():
                 profile = BeautyProfile("Jaira", "Normal", "Sunscreen")
                 profile.menu()
             case _:
-                print("\nInvalid choice! Please select a number from 1 to 4.")
+                print("\nInvalid choice! Please select a number from 0 to 4.")
                 buffer()
 
 main()
