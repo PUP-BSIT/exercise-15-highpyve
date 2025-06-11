@@ -123,7 +123,7 @@ class Person:
                 buffer()
                 return MenuOption.EXIT_OPTION
             
-            if 1 <= choice <= 6:
+            if MenuOption.NAME <= choice <= MenuOption.PERSON_SUMMARY:
                 return choice
             else:
                 print("\nInvalid option. Please enter a number from 0 to 6.")
