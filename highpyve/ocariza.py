@@ -8,7 +8,7 @@ SKIN_TYPE_DRY = "Dry"
 SKIN_TYPE_COMBINATION = "Combination"
 SKIN_TYPE_NORMAL = "Normal"
 
-VALID_SKIN_TYPES = (SKIN_TYPE_OILY, SKIN_TYPE_DRY, SKIN_TYPE_COMBINATION, 
+VALID_SKIN_TYPES = (SKIN_TYPE_OILY, SKIN_TYPE_DRY, SKIN_TYPE_COMBINATION,
                     SKIN_TYPE_NORMAL)
 
 # Constants for beauty menu options
@@ -34,11 +34,13 @@ class BeautyProfile:
         self.favorite_product = favorite_product
 
     def describe_skin(self):
+        """Display a message describing the user's current skin type."""
         clear_screen()
         print(f"\n{self.name.title()} has {self.skin_type.lower()} skin.")
         buffer()
 
     def recommend_routine(self):
+        """Suggest a skincare routine based on the user's skin type."""
         clear_screen()
         skin_type = self.skin_type
 
@@ -57,6 +59,7 @@ class BeautyProfile:
         buffer()
 
     def show_self_care_activities(self):
+        """Display a list of suggested self-care activities."""
         clear_screen()
         print("\nHere are some self-care activities you might enjoy:")
         print("\n- Taking a relaxing bath"
@@ -68,6 +71,7 @@ class BeautyProfile:
         buffer()
 
     def update_skin_type(self):
+        """Prompt the user to update their skin type."""
         clear_screen()
         new_skin_type = input("\nEnter your new skin type (oily, dry, "
                               "combination, or normal): ").strip().title()
@@ -82,6 +86,7 @@ class BeautyProfile:
         buffer()
 
     def set_new_favorite_product(self):
+        """Prompt the user to update their favorite beauty product."""
         clear_screen()
         new_product = input("\nEnter new favorite beauty product: ").strip()
         if not new_product:
@@ -92,6 +97,7 @@ class BeautyProfile:
         buffer()
 
     def display_summary(self):
+        """Display a summary of the user's beauty profile."""
         clear_screen()
         print("\n+----- BEAUTY PROFILE SUMMARY -----+")
         print(f"Name: {self.name.title()}")
@@ -101,6 +107,7 @@ class BeautyProfile:
         buffer()
 
     def display_menu(self):
+        """Display the beauty menu and return the user's selected option."""
         while True:
             print("\n" + "+" + "-"*38 + "+")
             print("|{:^38}|".format(" BEAUTY MENU "))
@@ -138,6 +145,7 @@ class BeautyProfile:
                 buffer()
 
     def process_choice(self, user_choice):
+        """Handle selected menu option."""
         match user_choice:
             case MenuOption.DESCRIBE_SKIN:
                 self.describe_skin()
@@ -153,6 +161,7 @@ class BeautyProfile:
                 self.set_new_favorite_product()
 
     def menu(self):
+        """Main loop to show and handle the beauty menu until exit."""
         clear_screen()
         user_choice = None
         while user_choice != EXIT_OPTION:
