@@ -25,8 +25,8 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def buffer():
-   input("\nPress [ENTER] to return to main menu...")
-   clear_screen()
+    input("\nPress [ENTER] to return to main menu...")
+    clear_screen()
 
 class BeautyProfile:
     def __init__(self, name, skin_type, favorite_product):

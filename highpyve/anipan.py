@@ -56,7 +56,7 @@ class Cat:
 
     def display_menu(self):
         while True:
-            print(f"\n{self.name}'s Menu:")
+            print(f"{self.name}'s Menu:\n")
             print(f"[{CatMenuOption.DETAILS}] - {self.name}'s Details")
             print(f"[{CatMenuOption.HOBBIES}] - {self.name}'s Hobbies")
             print(f"[{CatMenuOption.SIBLINGS}] - {self.name}'s Siblings")
